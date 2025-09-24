@@ -1,0 +1,7 @@
+# Ignore virtual environment, database, compiled files, and sensitive config
+
+.venv/
+__pycache__/
+*.pyc
+users.db
+.env

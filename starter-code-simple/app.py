@@ -1,22 +1,46 @@
 # Simple Python API - Starting Point for GitHub Classroom Assignment
 # This code has intentional security flaws for educational purposes
 
+# import os added to read .env variables in app rather than hardcoding sensitive data
+import os
+from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 import sqlite3
 import hashlib
 
+# This reads from the .env file
+load_dotenv()  
+
 app = Flask(__name__)
 
-# Security Issue: Hardcoded secrets
-DATABASE_URL = "postgresql://admin:password123@localhost/prod"
-API_SECRET = "sk-live-1234567890abcdef"
+# Hardcoded sensitive data presents a security issue
+# Resolved by setting `os.getenv` to read from environment
+DATABASE_URL = os.getenv("DATABASE_URL")   
+API_SECRET   = os.getenv("API_SECRET")         
+DATABASE_PATH = os.getenv("DATABASE_PATH", "users.db")
 
 def get_db_connection():
     return sqlite3.connect('users.db')
 
 @app.route('/health')
 def health_check():
-    return jsonify({"status": "healthy", "database": DATABASE_URL})
+    # Health check exposed DB URl, which included sensitive password
+    # Changed health check so it only checks if the app is running and the DB is connected   
+    try:
+        # Try to connect to the database using path defined in .env 
+        conn = sqlite3.connect(DATABASE_PATH)
+
+        # Run a query ("SELECT 1") to verify the DB is responsive
+        conn.execute("SELECT 1")
+
+        # Close the connection to avoid leaks
+        conn.close()
+
+        # If no errors, return a simple OK response
+        return jsonify({"status": "ok", "db_ok": True})
+    except Exception:
+        # If anything fails return degraded status and a 503 Service Unavailable
+        return jsonify({"status": "degraded", "db_ok": False}), 503
 
 @app.route('/users', methods=['GET'])
 def get_users():
