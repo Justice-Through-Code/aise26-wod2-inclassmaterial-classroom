@@ -257,3 +257,16 @@ Submit via your repository:
 4. Create a working branch. Implement changes via pull requests with reviews (ask a peer to review).
 5. Add security scanning, pre-commit hooks, CI, and docs. Configure branch protection on `main`.
 6. Complete the three breakout exercises as practice; then finalize your repository and written components.
+
+
+
+
+## Breakout Exercises Answers
+
+- [Code Review Exercise](code_review_exercise.md)
+- [Merge Conflict Exercise](merge_conflict_exercise.md)
+- [Crisis Management Exercise](crisis_management_exercise.md)
+
+## Notes
+- [Code Review Notes](code_reviewNotes.txt)
+- [Merge Conflict Notes](merge_conflictNotes.txt)

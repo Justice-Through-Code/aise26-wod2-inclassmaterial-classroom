@@ -162,12 +162,33 @@ Walk through what you would test after resolving conflicts:
 ## Discussion Questions (Team sharing)
 
 1. **What was your strategy for combining the features?**
+Take the database structure and persistence from Branch B, then layer in Branch A’s validation, password hashing, and JWT login. That way users are saved securely in the DB and can still log in with tokens.
+
 2. **What conflicts would you expect and how would you resolve them?**
+- Duplicate /users POST route → merge logic: validate → hash → save to DB.
+- Different imports → keep both sets (Flask + bcrypt + jwt + SQLAlchemy).
+- Password field type → store hashed password as a string.
+
 3. **What would you test to make sure your merge works?**
+- User creation with valid/invalid inputs.
+- Confirm password is hashed in DB.
+- Login returns a working JWT.
+- /users GET returns list without exposing passwords.
+- Duplicate username should return an error (e.g., 409).
+- Login should check the stored hash using bcrypt.checkpw().
+- JWT should expire after 24h and reject invalid tokens.
+
 4. **How is an intelligent merge different from just "picking one side"?**
+It keeps the best parts of both branches, avoids losing work, and results in a working, secure app. Just picking one side would drop half the features.
+
 
 ---
-
+## Edge Cases & Security Notes
+- Handle duplicate usernames gracefully with a 409 error.
+- Verify login by checking the bcrypt hash in the DB.
+- Use HS256 algorithm and include a 24h expiration in JWT.
+- Always close the DB session, even if an error happens.
+- In production, load SECRET_KEY from environment variables.
 ---
 
 ## Real-World Application
@@ -179,3 +200,4 @@ This mirrors actual development scenarios:
 - **Testing** your merge prevents broken deployments
 
 The skills you practice here prevent the "it worked on my machine" problems that break production systems.
+
