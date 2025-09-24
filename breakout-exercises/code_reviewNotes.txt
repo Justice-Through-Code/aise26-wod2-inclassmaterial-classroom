@@ -1,0 +1,31 @@
+The 6 biggest problems (in plain words)
+
+Passwords are stored as plain text
+→ If the database leaks, all user passwords are exposed.
+→ Should use bcrypt/argon2 hashing.
+→ Priority: Critical
+
+SQL query is built using string formatting
+→ Hackers can type trick inputs to break in (SQL injection).
+→ Should use parameterized queries.
+→ Priority: Critical
+
+Secrets (API key and DB password) are written directly in the file
+→ Anyone who sees the repo has the keys.
+→ Should load them from environment variables.
+→ Priority: Critical
+
+Passwords get printed in the logs
+→ Even if the DB is secure, logs could leak private data.
+→ Should log only usernames or request IDs, not secrets.
+→ Priority: High
+
+There’s a secret backdoor admin check
+→ Anyone who uses user_id=1 or "admin" gets full power.
+→ Should store user roles in the DB and check them safely.
+→ Priority: Critical
+
+External API call has no timeout or error handling
+→ If the server doesn’t respond, your app could hang forever.
+→ Should use timeout=5 and check responses.
+→ Priority: High

@@ -1,0 +1,73 @@
+The Story in Normal Words
+
+Imagine two friends are both working on the same recipe at the same time.
+
+Friend A is focused on making the food safe and healthy — they wash the veggies, make sure nothing is raw, and wrap things up cleanly.
+
+Friend B is focused on making the food last longer — they buy containers, put labels on them, and store everything in the fridge.
+
+Now you’ve got two versions of the recipe. The problem: you need one final recipe that has both safety AND storage built in.
+
+That’s basically what’s happening with Branch A and Branch B.
+
+What Branch A Did (Authentication)
+
+Checks if the username and password are “good enough.”
+
+Turns the password into a scrambled code (so no one sees the real one).
+
+Lets people log in and get a “ticket” (JWT token) so they can prove who they are.
+
+👉 Think: locks on the door + ID badges.
+
+What Branch B Did (Database)
+
+Builds a place (database) to actually store users.
+
+Creates a system to add new users and list them later.
+
+👉 Think: a filing cabinet with folders for each person.
+
+The Conflict
+
+Both friends wrote a “recipe step” for creating a user — but one focuses on security checks, and the other focuses on saving to the filing cabinet. If you just pick one, you lose the other.
+
+The Smart Merge Plan
+
+Use Branch B’s filing cabinet (database) so users are saved.
+
+Add Branch A’s locks and ID badges (password hashing, tokens).
+
+Make sure you check IDs before you file them (validation).
+
+Don’t keep any sensitive stuff visible (no storing plain passwords).
+
+What You’d Double-Check After Combining
+
+Can you add a new user safely (rules + goes into the cabinet)?
+
+Is the password scrambled, not written down in plain text?
+
+Can people log in and get their “badge” (JWT)?
+
+Can you still see a list of users, but without their secret info?
+
+What happens if someone tries to use a short name, weak password, or sign up twice?
+
+Why This Matters
+
+If you do the merge “the smart way,” you get the best of both friends:
+
+Safe and secure (thanks, Friend A).
+
+Organized and stored (thanks, Friend B).
+
+If you just “pick one side,” you either end up with:
+
+A safe system that forgets everything, OR
+
+A storage system that’s unsafe.
+
+Neither is good.
+
+👉 That’s all this exercise really means: take the best pieces of two different solutions, put them together carefully, and make sure you test that the final version actually works.
