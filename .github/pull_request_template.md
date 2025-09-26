@@ -4,8 +4,8 @@
 
 ## 🔗 Related Issues / Tickets
 <!-- Link issues; use keywords to auto-close. -->
-Fixes #  
-Closes #  
+Fixes #
+Closes #
 Relates to #
 
 ## 🧭 Type of Change
@@ -23,11 +23,11 @@ Relates to #
 
 ## 🧪 How Has This Been Tested?
 <!-- Describe your test plan so reviewers can reproduce. Include env, steps, and expected results. -->
-**Environment:** OS / Browser / Runtime / DB  
+**Environment:** OS / Browser / Runtime / DB
 **Steps to test:**
-1. 
-2. 
-3. 
-**Expected result:**  
+1.
+2.
+3.
+**Expected result:**
 **Screenshots / Recordings (if UI):**
 -
