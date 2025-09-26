@@ -1,8 +1,8 @@
 # Professional Git Workflows — Student Guide
 
 ## Overview
-**Format:** In-class breakout exercises + after-class individual assignment  
-**Language:** Python  
+**Format:** In-class breakout exercises + after-class individual assignment
+**Language:** Python
 **Skills:** Professional Git workflows, code reviews, merge conflicts, security
 
 ---
@@ -10,7 +10,7 @@
 ## Learning Objectives
 By completing this assignment, you will:
 - Design custom Git workflows that fit team needs
-- Write professional pull requests and provide constructive code reviews  
+- Write professional pull requests and provide constructive code reviews
 - Resolve merge conflicts systematically and safely
 - Implement security best practices and catch common vulnerabilities
 - Set up automated quality gates with branch protection and hooks
@@ -29,7 +29,7 @@ By completing this assignment, you will:
 ### After Class (Your Assignment)
 - Take the provided starter code in `starter-code-simple/` and create your own repository from it.
 - You can either:
-  1) Fork/clone this repository and push to a new repo you own, or  
+  1) Fork/clone this repository and push to a new repo you own, or
   2) If you received a GitHub Classroom link, accept it to create your student repo, then copy the starter code into that repo and complete all steps there.
 - Then complete all professionalization steps below using your own repository.
 
@@ -43,7 +43,7 @@ Transform the provided basic Python API into a professionally configured reposit
 #### Starter Code
 You'll receive a basic Flask API with intentional security issues:
 - User authentication system
-- Basic CRUD operations  
+- Basic CRUD operations
 - Configuration management
 - Simple database integration
 
@@ -103,7 +103,7 @@ You'll review code with multiple security issues including:
 **🔴 SECURITY: [Issue Type]**
 **Line X:** [Specific problem description]
 **Impact:** [What could go wrong]
-**Suggestion:** 
+**Suggestion:**
 ```python
 # Instead of this vulnerable code:
 old_code_example()

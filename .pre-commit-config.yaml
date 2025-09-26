@@ -1,0 +1,38 @@
+# .pre-commit-config.yaml
+repos:
+  # Hygiene
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+      - id: pretty-format-json
+        args: ["--autofix", "--no-sort-keys", "--indent", "2"]
+        exclude: '\.ipynb$'
+
+  # Secret scanning (requires a committed baseline)
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args:
+          - --baseline
+          - .secrets.baseline
+        exclude: '(node_modules/|\.venv/|\.git/)'
+
+  # Python lint/format
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9
+    hooks:
+      - id: ruff
+      - id: ruff-format
+
+  # Python security
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.9
+    hooks:
+      - id: bandit
+        args: ["-q", "-ll", "-x", "tests"]
