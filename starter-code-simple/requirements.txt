@@ -1,2 +1,6 @@
 Flask==2.3.2
-requests==2.31.0
+werkzeug<3.0
+python-dotenv
+bcrypt
+pytest
+pydantic>=2.0
