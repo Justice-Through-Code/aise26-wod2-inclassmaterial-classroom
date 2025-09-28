@@ -30,7 +30,8 @@ repos:
     rev: 7.3.0  # Latest stable
     hooks:
       - id: flake8
-        args: [--max-line-length=88, --ignore=E203]  # Compatible with Black    
+        args: [--max-line-length=88, --ignore=E203]  # Compatible with Black
+        exclude: ^.*/tests/
         additional_dependencies: [flake8-black, flake8-isort]  # Optional: Integrate with Black/isort
 
   # Mypy: Static type checking
@@ -57,10 +58,11 @@ repos:
     rev: v1.5.0  # Latest stable
     hooks:
       - id: detect-secrets
+        exclude: ^.*/tests/
 
   # Bandit: Security linter for Python code
   - repo: https://github.com/PyCQA/bandit/
     rev: 1.8.6  # Latest stable
     hooks:
       - id: bandit
-        exclude: ^tests/  # Optional: Skip tests
+        exclude: ^.*/tests/  # Optional: Skip tests
