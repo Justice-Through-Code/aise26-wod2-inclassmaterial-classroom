@@ -1,42 +1,60 @@
-# User Management API — Starter Code (Students)
-
-⚠️ **EDUCATIONAL PURPOSE**: This code contains intentional security vulnerabilities for learning. Do NOT use in production.
-
 ## Overview
-Basic Flask API for user management. Your task is to transform this into a secure, professionally configured repository in your own repo.
 
-## Current Features
-- User registration
-- User login
-- Basic user listing
-- Health check endpoint
-
-## Known Issues (You will fix these)
-This code has multiple security vulnerabilities you need to identify and fix:
-- Hardcoded secrets
-- SQL injection vulnerabilities
-- Weak password hashing
-- Missing input validation
-- Insecure logging
+A secure Flask-based user management API with best practices for secrets, authentication, and code quality.
 
 ## Setup Instructions
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+1. **Clone the repository**
 
-# Run the application
-python app.py
-```
+   ```
+   git clone <repo-url>
+   cd <repo-directory>
+   ```
+
+2. **Create and activate a virtual environment**
+
+   ```
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies**
+
+   ```
+   pip install -r requirements.txt
+   ```
+
+4. **Set up environment variables**
+   - Create a `.env` file and fill in your secrets.
+
+5. **Run the application**
+   ```
+   python app.py
+   ```
+
+## Team Workflow & Standards
+
+- All changes must be made via pull requests (PRs) to the `main` branch.
+- PRs require at least one code review and must pass CI checks.
+- Pre-commit hooks and security scans (Bandit, detect-secrets) are required.
+- Follow the [Contributing Guidelines](CONTRIBUTING.md).
+
+## Security
+
+- Secrets must never be hardcoded.
+- Use strong password hashing (bcrypt).
+- All code is scanned for vulnerabilities before merging.
 
 ## API Endpoints
 
 ### Health Check
+
 ```bash
 GET /health
 ```
 
 ### Create User
+
 ```bash
 POST /users
 {
@@ -46,6 +64,7 @@ POST /users
 ```
 
 ### Login
+
 ```bash
 POST /login
 {
@@ -55,14 +74,7 @@ POST /login
 ```
 
 ### List Users
+
 ```bash
 GET /users
 ```
-
-## What To Do Next
-Create a new repository you own (or use your GitHub Classroom repo with admin access) and copy this folder’s contents into it. Then:
-1. Set up branch protection and a PR-based workflow
-2. Add security scanning and pre-commit hooks
-3. Fix all security vulnerabilities
-4. Add professional documentation (README, PR template, contributing)
-5. Create a CI workflow to run tests, lint, and security scans
