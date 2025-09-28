@@ -59,6 +59,7 @@ repos:
     hooks:
       - id: detect-secrets
         exclude: ^.*/tests/
+        args: [--exclude-files=^breakout-exercise-answers/]
 
   # Bandit: Security linter for Python code
   - repo: https://github.com/PyCQA/bandit/
