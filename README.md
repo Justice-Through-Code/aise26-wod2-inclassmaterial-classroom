@@ -1,5 +1,5 @@
 # Professional Git Workflows — Student Guide
-
+## Additional context and AI-assisted resources are documented in [references.md](./references.md)
 ## Overview
 **Format:** In-class breakout exercises + after-class individual assignment  
 **Language:** Python  
