@@ -16,18 +16,21 @@ import requests
 import sqlite3
 import hashlib
 
+# API Key, Database_URL, and Debug_mode should all be in a .env file 
 API_KEY = "sk-live-1234567890abcdef"
 DATABASE_URL = "postgresql://admin:password123@localhost/prod"
 DEBUG_MODE = True
 
 def authenticate_user(username, password):
     conn = sqlite3.connect("users.db")
+    #No f string on sqlite query for security reasons
     query = f"SELECT * FROM users WHERE username='{username}' AND password='{password}'"
     
     result = conn.execute(query).fetchone()
     
+    #Password should be hashtag
     print(f"Login attempt: {username}:{password}")
-    
+    #This API call should be in a try and except block
     response = requests.post("https://api.auth.com/verify", 
                            data={"user": username, "key": API_KEY})
     
@@ -35,6 +38,7 @@ def authenticate_user(username, password):
 
 def reset_password(user_id, new_password):
     conn = sqlite3.connect("users.db")
+    #No f string on sqlite query for security reasons
     query = f"UPDATE users SET password='{new_password}' WHERE id={user_id}"
     conn.execute(query)
     conn.commit()
